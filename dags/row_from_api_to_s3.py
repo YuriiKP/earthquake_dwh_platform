@@ -5,8 +5,8 @@ import pendulum
 
 from airflow import DAG 
 from airflow.models import Variable
-from airflow.providers.standard.operators.python import PythonOperator
-from airflow.providers.standard.operators.empty import EmptyOperator
+from airflow.operators.empty import EmptyOperator
+from airflow.operators.python import PythonOperator
 
 
 
@@ -31,7 +31,7 @@ SHORT_DESCRIPTION = "SHORT DESCRIPTION"
 
 args = {
     'owner': OWNER,
-    'start_date': pendulum.datetime(year=2025, month=5, day=1, tz='Europe/Moscow'), 
+    'start_date': pendulum.datetime(year=2025, month=9, day=1, tz='Europe/Moscow'), 
     'catchup': True,
     'retries': 3, 
     'retry_delay': pendulum.duration(hours=1) 
