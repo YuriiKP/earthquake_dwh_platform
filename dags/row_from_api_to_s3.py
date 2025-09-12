@@ -16,7 +16,7 @@ DAG_ID = 'row_from_api_to_s3'
 
 # Таблицы в DAG 
 LAYER = 'raw'
-SOURSE = 'earthquake'
+SOURCE = 'earthquake'
 
 # S3
 ACCESS_KEY = Variable.get('ACCESS_KEY')
@@ -67,7 +67,7 @@ def get_and_transfer_api_data_to_s3(**context):
         COPY (
             SELECT *
             FROM read_csv_auto("https://earthquake.usgs.gov/fdsnws/event/1/query?format=csv&starttime={start_date}&endtime={end_date}")
-        ) TO "s3://prod/{LAYER}/{SOURSE}/{start_date}/{start_date}_00-00-00.gz.parquet"
+        ) TO "s3://prod/{LAYER}/{SOURCE}/{start_date}/{start_date}_00-00-00.gz.parquet"
         '''
     )
 
